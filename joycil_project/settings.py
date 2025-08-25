@@ -6,7 +6,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'replace-me'
 DEBUG = False
 
-ALLOWED_HOSTS = ['joycilfoods.onrender.com', 'www.joycilfoods.onrender.com', 'https://Joycilfoods.onrender.com']
+ALLOWED_HOSTS = ['joycilfoods.onrender.com']
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -50,7 +50,7 @@ WSGI_APPLICATION = 'joycil_project.wsgi.application'
 
 DATABASES = {
     'default': dj_database_url.config(
-        default=os.environ.get('DATABASE_URL'),
+        default=os.environ.get('DATABASE_URL',),
         conn_max_age=600,
         ssl_require=True
     )
@@ -61,8 +61,7 @@ TIME_ZONE='Africa/Nairobi'
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 STATIC_URL='/static/'
 STATICFILES_DIRS = [BASE_DIR / "static"]   # where your dev static files live
-STATIC_ROOT = BASE_DIR / "staticfiles"  
-MEDIA_URL='/media/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 MEDIA_ROOT=BASE_DIR/'media'
 DEFAULT_AUTO_FIELD='django.db.models.BigAutoField'
 
@@ -72,6 +71,11 @@ LOGOUT_REDIRECT_URL = '/'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'  # prints emails in console
-DEFAULT_FROM_EMAIL = 'noreply@yourdomain.com'
+# Email verification
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
 
