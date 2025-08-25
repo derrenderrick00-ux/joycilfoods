@@ -6,7 +6,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'replace-me'
 DEBUG = False
 
-ALLOWED_HOSTS = ['joycifoods.onrender.com']
+ALLOWED_HOSTS = ['joycilfoods.onrender.com', 'www.joycilfoods.onrender.com', 'https://Joycilfoods.onrender.com']
 
 INSTALLED_APPS = [
     'django.contrib.admin',
