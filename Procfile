@@ -1,1 +1,1 @@
-web: gunicorn joycilfoods.wsgi 
+web: gunicorn joycil_project.wsgi 
