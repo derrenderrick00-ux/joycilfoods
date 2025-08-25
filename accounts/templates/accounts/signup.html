@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Sign Up - JoycilFoods{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow-sm">
+                <div class="card-header bg-primary text-white text-center">
+                    <h3>Create Your Account</h3>
+                </div>
+                <div class="card-body">
+                    <form method="post" novalidate>
+                        {% csrf_token %}
+                        {% for field in form %}
+                            <div class="mb-3">
+                                <label class="form-label" for="{{ field.id_for_label }}">{{ field.label }}</label>
+                                {{ field }}
+                                {% if field.help_text %}
+                                    <div class="form-text">{{ field.help_text|safe }}</div>
+                                {% endif %}
+                                {% if field.errors %}
+                                    <div class="text-danger small mt-1">
+                                        {{ field.errors }}
+                                    </div>
+                                {% endif %}
+                            </div>
+                        {% endfor %}
+                        <button type="submit" class="btn btn-primary w-100">Sign Up</button>
+                    </form>
+                </div>
+                <div class="card-footer text-center">
+                    Already have an account? <a href="{% url 'login' %}">Login here</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    input, select {
+        border-radius: 8px;
+        padding: 10px;
+        width: 100%;
+    }
+    .card { border-radius: 16px; }
+</style>
+{% endblock %}

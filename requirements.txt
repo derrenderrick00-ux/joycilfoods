@@ -1,0 +1,12 @@
+asgiref==3.9.1
+distlib==0.4.0
+Django==4.2.23
+filelock==3.18.0
+gunicorn==23.0.0
+packaging==25.0
+pillow==11.3.0
+platformdirs==4.3.8
+sqlparse==0.5.3
+tzdata==2025.2
+virtualenv==20.33.1
+whitenoise==6.9.0

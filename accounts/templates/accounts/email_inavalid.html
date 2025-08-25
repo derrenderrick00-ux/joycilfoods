@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+{% block title %}Invalid Link{% endblock %}
+
+{% block content %}
+<h2>Invalid or Expired Link</h2>
+<p>The verification link is invalid or has expired. Please sign up again.</p>
+<a href="{% url 'signup' %}" class="btn btn-warning">Sign Up</a>
+{% endblock %}
